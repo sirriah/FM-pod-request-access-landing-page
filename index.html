@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="./style.css" />
+
+    <title>Frontend Mentor | Pod request access landing page</title>
+
+    <script>
+      function validateForm() {
+        var email = document.forms["formEmail"]["inputEmail"].value;
+        //var email = document.getElementById("inputEmail");
+        console.log("validation of: " + email);
+        const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+        if (email == "") {
+          //  if(!email.checkValidity()) {
+          console.log("E-mail input is empty.");
+          document.getElementById("error-empty-email").innerHTML =
+            "Oops! Please add your email.";
+          return false;
+        } else if (!regexEmail.test(email)) {
+          console.log("E-mail value in wrong format.");
+          document.getElementById("error-empty-email").innerHTML =
+            "Oops! Please check your email.";
+          return false;
+        } else {
+          return true;
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="container">
+      <main class="main">
+        <img src="assets/desktop/logo.svg" alt="Pod logo" class="pod-logo" />
+
+        <div class="content">
+          <h1 class="intro-headline">
+            Publish your podcasts
+            <span class="intro-headline__highlight">everywhere.</span>
+          </h1>
+          <p class="intro-paragraph">
+            Upload your audio to Pod with a single click. We’ll then distribute
+            your podcast to Spotify, Apple Podcasts, Google Podcasts, Pocket
+            Casts and more!
+          </p>
+
+          <div class="forflex">
+            <div class="form">
+              <form
+                target="_self"
+                onsubmit="return validateForm();"
+                name="formEmail"
+                method="post"
+                class="form-email"
+              >
+                <!-- missing type="email", because it validates this field in browser and it cannot reach my script. Same for "required" -->
+                <input
+                  name="inputEmail"
+                  aria-label="insert e-mail"
+                  placeholder="Email address"
+                  class="form-email__input-email"
+                />
+                <input
+                  type="submit"
+                  title="Request Access"
+                  value="Request Access"
+                  aria-label="Submit"
+                  class="form-email__submit-form"
+                />
+              </form>
+              <div class="error-message" id="error-empty-email"></div>
+            </div>
+
+            <div class="sponsors">
+              <div class="spotify-logo">
+                <img src="assets/desktop/spotify.svg" alt="Spotify logo" />
+              </div>
+              <div class="apple-podcast-logo">
+                <img
+                  src="assets/desktop/apple-podcast.svg"
+                  alt="Apple podcast logo"
+                />
+              </div>
+              <div class="google-podcast-logo">
+                <img
+                  src="assets/desktop/google-podcasts.svg"
+                  alt="Google podcast logo"
+                />
+              </div>
+              <div clas="pocketcasts-logo">
+                <img src="assets/desktop/pocket-casts.svg" alt="Pocket logo" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
