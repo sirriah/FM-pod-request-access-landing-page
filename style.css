@@ -74,6 +74,10 @@ body {
           flex-direction: column;
 }
 
+.form-label {
+display: none;
+}
+
 .form-email__input-email {
   width: 257px;
   height: 56px;
